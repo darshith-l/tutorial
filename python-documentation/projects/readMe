@@ -1,3 +1,6 @@
 Project 1: Guess the numbers
 Very basic, accepts number players, number of rounds. Player must guess any number bw 0-10, if his guessed and randomly generated number matches, he gains point
 Winners are players with hoghest score
+
+Project 2:
+Very basic, The classical rock, paper scissor game
