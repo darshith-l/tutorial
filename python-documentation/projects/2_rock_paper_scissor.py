@@ -1,11 +1,5 @@
 import random
 
-def validate(playing_with):
-   if(playing_with != 'f' and playing_with != 'c'):
-      return False
-   
-   return True
-
 def rules():
    print("***********Rules*************")
    print("1. You should enter rock, paper, scissor only; else input will not be validated")
@@ -44,34 +38,32 @@ def start(player1_name, no_rounds):
       print("Ooops",player1_name," Bot won :(")
    else:
       print("Its an draw... ",player1_name,", better luck next time")
-
-print("Welcome to ROCK PAPER SCISSOR")
-print("\n\n")
-
-playing_with = ""
-no_rounds = abs(int(input("Enter number of rounds you wish to play: ")))
-
-print("You are playing with computer!!")
-player1_name = input("Enter your name: ")
-start(player1_name,no_rounds)
-
-   #accepting valid mode(Either with friend or computer)
-# while(not validate(playing_with)):
-#    playing_with = str.lower(input("Enter c/C to challenge Bot or f/F to play with your friend: "))
-#    if(playing_with != 'f' and playing_with != 'c'):
-#       print("Enter either c/C or f/F")
-
-# if(playing_with == 'c'):
-#    print("You are playing with computer!!")
-#    player1_name = input("Enter your name: ")
-#    start(player1_name,no_rounds)
-#    # return player1_name
    
-# else:
-#    print("You are challenging your friend!!")
-#    player1_name = input("Enter Player-1 name: ")
-#    player2_name = input("Enter Player-2 name: ")
-#    start(player1_name, player2_name, no_rounds)
-#    # return player1_name, player2_name
+   flag = input("Press any character key to re-match, \"0\" to end game: ")
+   flag = False if flag == '0' else True
+   rematch(flag)
+
+def rematch(flag):
+   if(flag):
+      print("\n\n\n")
+      main()
+   else:
+      print("Thank you, have a nice day...")
+   
+def main():
+   print("Welcome to ROCK PAPER SCISSOR")
+   print("\n\n")
+
+   playing_with = ""
+   no_rounds = abs(int(input("Enter number of rounds you wish to play: ")))
+
+   if(no_rounds):
+      print("Ooops, looks like you are not in mode.. ending the game\nThankyou have a nice day :)")
+
+   player1_name = input("Enter your name: ")
+
+   start(player1_name, no_rounds)
+
+main()
 
 
