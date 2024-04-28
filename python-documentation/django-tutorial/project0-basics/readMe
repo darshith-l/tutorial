@@ -1,0 +1,11 @@
+Project0:
+Basics concept of django is covered.
+1. Creating virtual envinorment
+2. Installing django
+3. Creating django project, django app
+4. URL configuration
+5. HTML static and dynamic web page
+6. GET and POST methods
+7. Reading data from html file to view(python function), writing data from view to html file
+8. Recognition of static file
+Source: 

@@ -1,0 +1,45 @@
+<!-- <h1>Hey {{name}} welcome</h1> -->
+<!-- <h1>
+   Hey {{name}} welcome<br>
+   You are {{age}} years old<br>
+   You are {{nationality}}
+</h1> -->
+
+<!-- *******************************************************To send to data to another page -->
+<!-- <form action="counter" method="">
+   <textarea name="text" id="" cols="30" rows="10"></textarea><br>
+   <button type="submit">Submit</button>
+</form> -->
+
+<!-- *******************To compute in same page: -->
+<!-- <form action="counter" method="">
+   <textarea name="text" id="" cols="30" rows="10"></textarea><br>
+   <button type="submit">Submit</button>
+</form>
+
+<h1>
+   The number of words enetered is: {{word_count}}
+</h1> -->
+
+<!-- ***************************************************To illustrate the post method -->
+<!-- <form action="counter" method="POST">
+   {% csrf_token%} 
+   <textarea name="text" id="" cols="30" rows="10"></textarea><br>
+   <button type="submit">Submit</button>
+</form>
+
+<h1>
+   The number of words enetered is: {{word_count}}
+</h1> -->
+<!-- {% csrf_token%}  generates forbidden error, prevents some kinds of errors  -->
+
+<!-- ************To illustrate how django recognizes static files like css, js, images etc -->
+
+<!-- Below code does'nt work as django does'nt recognize the style.css file -->
+<!-- <link rel="stylesheet" href="style.css">
+<h1>"Welcome to the page</h1> -->
+
+<!-- Below code works, created new folder in root directory called static, its path is mentioned in settings.py under STATICFILES_DIRS variable -->
+{%load static%} 
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<h1>Welcome to the </h1>
