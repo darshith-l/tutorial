@@ -76,10 +76,7 @@ class temp{
 
 		t1.insert();
 		t1.levelOrder_traversal();
-		t1.q.add(t1.root);
-
-		t1.insert();
-		t1.levelOrder_traversal();
+		
 	}
 }
 
