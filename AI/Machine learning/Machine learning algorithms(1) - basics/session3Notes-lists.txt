@@ -1,0 +1,36 @@
+To find a element find()
+To find count of element count()
+
+To split the sentence to word use split()
+to get all lower characters and all upper characters: upper(),lower()
+
+All the above mentioned functions belongs to a class. Refer for other function in string.
+
+A list is a set of items which is enclosed by square brackets and separated by comma
+Can contain different data types.
+li=[12,20.9,'a',"darsh"]
+to find length len(li)
+
+#to print every element:
+for x in li:
+    print(x)
+#to print spefied index range:
+for i in range(0,2):
+    print(li[i])
+
+l2= range(0,21) #sets list members from 0 to 20
+
+
+Membership operators are: in,is,not in
+x=23
+print(x in l2) #l2 is list used above
+#prints false
+
+See other functions related to lists
+
+
+We can add two lists.
+append(item) is used to insert elemnt at last
+insert(index,item) is used to insert at given index
+pop() removes last element in list
+remove(item) deletes the specified item
