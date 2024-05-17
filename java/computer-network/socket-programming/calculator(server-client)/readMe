@@ -1,0 +1,6 @@
+Version 1:
+- Basic implementation of server-client paradigm
+- Client accepts an operation
+- Server does the operation, and sends back to client where client prints answer
+- No error handling done for invalid input from client side 
+- Illustrates the establishment of socket and connection to the server
