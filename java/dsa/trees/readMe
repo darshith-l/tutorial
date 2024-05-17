@@ -1,0 +1,31 @@
+BinaryTree.java: (V1)
+
+Operations:
+Insert, Delete, Search
+Traversals: inorder, preorder, postorder (all three with and without reccurssion), level order
+
+1) Insert:
+- Insertion while creating can be done
+- Insertion after creating the tree can also be don
+- To achieve above purpose, leaf nodes are brought
+- Insertion cannot be done if root has only one child
+- Updation cannot be done
+
+2) Delete:
+- Boolean function, returns true after deletion else false
+- Removes the first occurance of target element provided
+- In case of target node has both children, it will be replaced with deepest right node
+
+3) Traversal:
+- All trversals are static, returns void. One argument isRecurssion, true by default
+****Provided traversals are:
+- preorder_traversal(): only one implementation, non reccurssive;
+- inorder_traversal();
+- preorder_traversal();
+- postorder_traversal();
+
+inorder_traversal():
+- inorder_traversal(), inorder_traversal(true) calls inorder(root)
+- inorder_traversal(false) implements inorder traversal within it
+
+similarly for inorder_traversal(), preorder_traversal(), postorder_traversal()...
