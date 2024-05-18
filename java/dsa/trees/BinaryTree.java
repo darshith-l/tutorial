@@ -80,23 +80,7 @@ class Tree{
    }
 
 
-   /*************************************Searching************************************************ */
-   public boolean search(int key){
-      Queue<Node> treeTrack = new LinkedList<>();
-      treeTrack.add(root);
-
-      while(!treeTrack.isEmpty()){
-         Node presendtNode = treeTrack.remove();
-         if(presendtNode.data == key) return true;
-         if(presendtNode.lchild != null)
-         treeTrack.add(presendtNode.lchild);
-         if(presendtNode.rchild != null)
-         treeTrack.add(presendtNode.rchild);
-      }
-
-      return false;
-   }
-
+   /**************************************Deletion************************************************** */
    public boolean delete(int key){
       Queue<Node> treeTrack = new LinkedList<>();
       treeTrack.add(root);
@@ -203,21 +187,49 @@ class Tree{
 
    //levelorder
    public void levelOrder_traversal(){
-      System.out.println("\n\n************Started Level order traversal");
-      Queue<Node> displayTrack = new LinkedList<>();
-      displayTrack.add(root);
+      levelOrder_traversal(false);
+   }
+   public void levelOrder_traversal(boolean reverse){
+      System.out.println("\n\n************Started Level order traversal reverse: " + reverse);
+      if(!reverse){
+         
+         Queue<Node> displayTrack = new LinkedList<>();
+         displayTrack.add(root);
 
-      while(!displayTrack.isEmpty()){
-         Node presendtNode = displayTrack.remove();
-         System.out.print(presendtNode.data+"-> ");
-         if(presendtNode.lchild != null)
-         displayTrack.add(presendtNode.lchild);
-         if(presendtNode.rchild != null)
-         displayTrack.add(presendtNode.rchild);
+         while(!displayTrack.isEmpty()){
+            Node presendtNode = displayTrack.remove();
+            System.out.print(presendtNode.data+"-> ");
+            if(presendtNode.lchild != null)
+            displayTrack.add(presendtNode.lchild);
+            if(presendtNode.rchild != null)
+            displayTrack.add(presendtNode.rchild);
+         }
+
+      }
+      else{
+         Queue<Node> displayTrack = new LinkedList<>();
+         Stack<Node> orderTrack = new Stack<>();
+         displayTrack.add(root);
+
+         while(!displayTrack.isEmpty()){
+            Node presendtNode = displayTrack.remove();
+            if(presendtNode.rchild != null){
+               displayTrack.add(presendtNode.rchild);
+               orderTrack.push(presendtNode.rchild);
+            }
+            if(presendtNode.lchild != null){
+               displayTrack.add(presendtNode.lchild);
+               orderTrack.push(presendtNode.lchild);
+            }
+         }
+
+         while(!orderTrack.isEmpty()){
+            System.out.print(orderTrack.pop().data+"-> ");
+         }
       }
 
       System.out.println();
-      System.out.println("\n*************Ended preorder traversal");
+      System.out.println("\n*************Ended Level order traversal reverse: " + reverse);
    }
 
    //inorder
@@ -355,8 +367,67 @@ class Tree{
       }
    }
 
-   //Utility private functions:
-   private Queue<Node> getLeafNode(){
+   /*************************************Searching************************************************ */
+   public boolean search(int key){
+      Queue<Node> treeTrack = new LinkedList<>();
+      treeTrack.add(root);
+
+      while(!treeTrack.isEmpty()){
+         Node presendtNode = treeTrack.remove();
+         if(presendtNode.data == key) return true;
+         if(presendtNode.lchild != null)
+         treeTrack.add(presendtNode.lchild);
+         if(presendtNode.rchild != null)
+         treeTrack.add(presendtNode.rchild);
+      }
+
+      return false;
+   }
+
+   /**************************************Height of the tree***************************************************** */
+   public int heigth(){
+      Queue<Node> levelOrderTrack = new LinkedList<>();
+      levelOrderTrack.add(root);
+      levelOrderTrack.add(null);
+
+
+      int depth = 0;
+      while(!levelOrderTrack.isEmpty()){
+         Node currNode = levelOrderTrack.remove();
+
+         if(currNode == null){
+            depth++;
+            if(!levelOrderTrack.isEmpty())
+               levelOrderTrack.add(null);
+         }
+
+         else{
+            if(currNode.lchild != null) levelOrderTrack.add(currNode.lchild);
+            if(currNode.rchild != null) levelOrderTrack.add(currNode.rchild);
+         }
+      }
+
+      return depth;
+   }
+
+   //Deepest node:
+   public Node deepestNode(){
+      Node deepestNode = null;
+
+      Queue<Node> levelOrderTrack = new LinkedList<>();
+
+      levelOrderTrack.add(root);
+
+      while(!levelOrderTrack.isEmpty()){
+         deepestNode = levelOrderTrack.remove();
+         if(deepestNode.rchild != null) levelOrderTrack.add(deepestNode.rchild);
+         if(deepestNode.lchild != null) levelOrderTrack.add(deepestNode.lchild);
+      }
+
+      return deepestNode;
+   }
+   //leaf nodes:
+   public Queue<Node> getLeafNode(){
       Queue<Node> leafNodes = new LinkedList<>();
       if(root == null){
          return leafNodes;
@@ -379,40 +450,107 @@ class Tree{
 
       return leafNodes;
    }
+
+   /********************************Views of the trees **********************************************************/
+
+   //left view:
+   public void leftView(){
+      Queue<Node> track = new LinkedList<>();
+      track.add(root);
+
+      System.out.println("\n\n********Started left view*****************");
+      while(!track.isEmpty()){
+         int n = track.size();
+
+         for(int i=0; i<n; i++){
+            Node curr = track.remove();
+
+            if(i == 0){
+               System.out.print(curr.data+" ");
+            }
+
+            if(curr.lchild != null) track.add(curr.lchild);
+            if(curr.rchild != null) track.add(curr.rchild);
+
+         }
+      }
+      System.out.println("\n********ended left view*****************\n");
+   }
+
+   //right view
+   public void rightView(){
+      Queue<Node> track = new LinkedList<>();
+      track.add(root);
+      System.out.println("\n\n********Started right view*****************");
+      while(!track.isEmpty()){
+         int n = track.size();
+
+         for(int i=0; i<n; i++){
+            Node curr = track.remove();
+
+            if(i == n-1){
+               System.out.print(curr.data+" ");
+            }
+
+            if(curr.lchild != null) track.add(curr.lchild);
+            if(curr.rchild != null) track.add(curr.rchild);
+
+         }
+      }
+      System.out.println("\n********ended right view*****************\n");
+   }
 }
 
 class BinaryTree{
    public static void main(String[] args) {
       System.out.println("Welcome!! ");
 
-      Tree t2 = new Tree();
+      Tree t1 = new Tree();
+      t1.root.data = 1;
 
-      t2.root.data = 1;
+      t1.root.lchild = new Node(2);
+      t1.root.rchild = new Node(3);
 
-      t2.root.lchild = new Node(2);
-      t2.root.rchild = new Node(7);
+      t1.root.lchild.lchild = new Node(4);
+      t1.root.lchild.rchild = new Node(5);
 
-      t2.root.lchild.rchild = new Node(3);
-      t2.root.lchild.rchild.lchild = new Node(4);
-      t2.root.lchild.rchild.lchild.rchild = new Node(5);
-      t2.root.lchild.rchild.lchild.rchild.lchild = new Node(6);
+      t1.root.rchild.lchild = new Node(10);
+      t1.root.rchild.rchild = new Node(11);
 
-      t2.root.rchild.lchild = new Node(8);
-      t2.root.rchild.lchild.rchild = new Node(9);
-      t2.root.rchild.lchild.rchild.lchild = new Node(10);
+      t1.root.lchild.lchild.lchild = new Node(6);
+      t1.root.lchild.lchild.rchild = new Node(7);
 
-      t2.levelOrder_traversal();
+      t1.root.lchild.rchild.lchild = new Node(8);
+      t1.root.lchild.rchild.rchild = new Node(9);
 
-      t2.inorder_traversal();
-      t2.inorder_traversal(false);
+      t1.root.rchild.lchild.lchild = new Node(12);
+      t1.root.rchild.lchild.rchild = new Node(13);
 
-      System.out.println();
-      t2.postorder_traversal();
-      t2.postorder_traversal(false);
+      t1.root.rchild.rchild.lchild = new Node(15);
+      t1.root.rchild.rchild.rchild = new Node(14);
+
+      t1.root.rchild.rchild.lchild.lchild = new Node(16);
+      t1.root.rchild.rchild.lchild.rchild = new Node(17);
       
-      System.out.println();
-      t2.preorder_traversal();
-      t2.preorder_traversal(false);
+      t1.levelOrder_traversal();
+      
 
    }
 }
+
+
+//Documentation section
+/*inorder_traversal():
+- inorder_traversal(), inorder_traversal(true) calls inorder(root)
+- inorder_traversal(false) implements inorder traversal within it
+
+similarly for inorder_traversal(), preorder_traversal(), postorder_traversal()...
+
+levelOrder_traversal(),levelOrder_traversal(true)  prints proper level order traversal
+levelOrder_traversal(false) prints reverse level order 
+
+getLeafNode(): returns queue of node which are leaf nodes
+
+leftView(), rightView(): prints left view and right view of the tree.
+
+*/

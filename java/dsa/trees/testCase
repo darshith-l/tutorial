@@ -47,3 +47,37 @@ Binary tree1:
       // t1.inorder_traversal(false); 
       // t1.preorder_traversal(false);
       // t1.postorder_traversal(false);
+
+BinaryTree t2:
+      Tree t2 = new Tree();
+
+      t2.root.data = 1;
+
+      t2.root.lchild = new Node(2);
+      t2.root.rchild = new Node(7);
+
+      t2.root.lchild.rchild = new Node(3);
+      t2.root.lchild.rchild.lchild = new Node(4);
+      t2.root.lchild.rchild.lchild.rchild = new Node(5);
+      t2.root.lchild.rchild.lchild.rchild.lchild = new Node(6);
+
+      t2.root.rchild.lchild = new Node(8);
+      t2.root.rchild.lchild.rchild = new Node(9);
+      t2.root.rchild.lchild.rchild.lchild = new Node(10);
+
+      System.out.println(t2.heigth());
+
+      t2.levelOrder_traversal();
+      t2.levelOrder_traversal(true);
+      t2.levelOrder_traversal(false);
+
+      t2.inorder_traversal();
+      t2.inorder_traversal(false);
+
+      System.out.println();
+      t2.postorder_traversal();
+      t2.postorder_traversal(false);
+      
+      System.out.println();
+      t2.preorder_traversal();
+      t2.preorder_traversal(false);

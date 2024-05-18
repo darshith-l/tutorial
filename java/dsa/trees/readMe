@@ -1,5 +1,33 @@
-BinaryTree.java: (V1)
+BinaryTree.java:
+********Inorder traversal algorithm:
+1) Initialise empty stack, Node curr = root
+2) While stack is not empty or curr != null:
+      while(curr != null):
+         curr = curr.lchild
+      end while   
+      curr = pop from stack
+      process curr
+      curr = curr.rchild
+   end while
 
+********Post Order traversal:
+1) declare two empty stacks
+2) push root to stack1
+3) while stack1 is not empty:
+      pop stack1 and push to stack2
+      push left and right child of popped node to stack1
+4) pop the stac2 and get postOrder traversal of given tree
+
+******Pre Order traversal:
+2) declare empty stacka and push root node.
+2) While stack is not empty:
+   pop a node, process it.
+   push right and left child of popped node into stack.
+
+
+<------------------------------------- Version details --------------------------------------------------->
+BinaryTree.java: (V1)
+basic binary tree with basic operations.
 Operations:
 Insert, Delete, Search
 Traversals: inorder, preorder, postorder (all three with and without reccurssion), level order
@@ -19,13 +47,19 @@ Traversals: inorder, preorder, postorder (all three with and without reccurssion
 3) Traversal:
 - All trversals are static, returns void. One argument isRecurssion, true by default
 ****Provided traversals are:
-- preorder_traversal(): only one implementation, non reccurssive;
+- levelOrder_traversal(); only one implementation, non reccurssive;
 - inorder_traversal();
 - preorder_traversal();
 - postorder_traversal();
 
-inorder_traversal():
-- inorder_traversal(), inorder_traversal(true) calls inorder(root)
-- inorder_traversal(false) implements inorder traversal within it
+4) Search(): boolean function returns true if element exists in tree else false
 
-similarly for inorder_traversal(), preorder_traversal(), postorder_traversal()...
+5) getLeafNode(): returns list of leafNodes 
+
+
+BinaryTree.java (V2):
+Added height of tree, updated levelOrder_traversal(), added traversal algorithm to readMe
+deepest node: left most node in the deepest level, reverse level order is used.
+getLeafNode(): updated
+leftView(): First node in each level, rightView(): last node in each level
+
