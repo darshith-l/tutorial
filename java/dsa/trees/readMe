@@ -63,3 +63,11 @@ deepest node: left most node in the deepest level, reverse level order is used.
 getLeafNode(): updated
 leftView(): First node in each level, rightView(): last node in each level
 
+BinaryTree.java(v3):
+Major changes done, concept of package is used.
+TreeUtils has class Traversal,Properties, Node, Views class which provide following service:
+Traversal: level order, reverse level order, inorder, preorder, postorder
+Properties: search(), height(), deepestNode(), getLeafNode()
+Views: leftView(), rightView().
+You can get an tree from BinaryTreeExamples.java file, 2 trees are added.
+
